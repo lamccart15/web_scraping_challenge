@@ -13,17 +13,17 @@ mongo=PyMongo(app, uri=uri)
 # Create route that renders index.html template
 @app.route('/')
 def index(): 
-    mars = mongo.db.mars.find_one({})
-    return render_template("index.html", mars=mars, space=post_data)
+    mars_data = mongo.db.mars_data.find_one()
+    return render_template("index.html", data=mars_data)
 
 @app.route('/scrape')
 def scrape(): 
 
     #Run scrape function
-    post_data = scrape_mars.scrape()
+    post = scrape_mars.scrape_info()
 
     # Update Mongo database using update and upsert=True
-    mongo.db.mars.update({}, post_data, upsert=True)
+    mongo.db.mars_data.update({}, post, upsert=True)
 
     # Redirect back to home page
     return redirect("/")

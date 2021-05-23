@@ -27,7 +27,7 @@ def scrape_info():
     news_p = soup.find_all('div', class_='article_teaser_body')[0].text
 
 
-    # Save to MongoDB
+    # Save into dictionary 
     post = {
         "title": news_title, 
         "info": news_p
