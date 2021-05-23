@@ -23,10 +23,19 @@
 
     <!--Latest News-->
     <div class="row" id="space_data">
-      <div class="col-md-12">
+      <div class="col-md-6">
         <h2>Latest Mars News</h2>
-        <h3>{{data.news_title}}</h3>
-        <h4>{{data.news_p}}</h4>
+        <h3>{{data.title}}</h3>
+        <h4>{{data.info}}</h4>
+        <div class="text-left">
+          <h2>Featured Mars Image</h2>
+          <img src="{{data.featured_image}}" class="rounded">
+        </div>
+        <table class ="table table-bordered">
+        <thead class ="table-light">
+        {{data.fact_table | safe}}
+        </thead>
+        </table>
       </div>
     </div>
 
